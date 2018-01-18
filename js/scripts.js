@@ -8,10 +8,10 @@ $(document).ready(function() {
     inputWordsArray.forEach(function(currentWord) {
       var currentArray = currentWord.split("");
       var translateCurrentWord = wordTranslate(currentArray);
-      console.log(translateCurrentWord);
-
-
-  })
+      storeTranslatedWords.push(translateCurrentWord);
+    });
+    var result = storeTranslatedWords.join(" ");
+    $("#translatedPhrase").text(result);
   });
 
 
@@ -24,8 +24,9 @@ var wordTranslate = function(inputArray) {
     resultArray = inputArray;
     resultArray.push("way");
     return resultArray.join("");
-  } else if (inputArray[0]==="q" && inputArray[1]==="u") {
-    resultArray = inputArray.slice(2) + "quay";
+  } else if ((inputArray[0]==="q") && (inputArray[1]==="u")) {
+    resultArray = inputArray.slice(2);
+    resultArray.push("quay");
     return resultArray.join("");
   } else {
     if (!(/[aeiou]/i.test(inputArray[1])) && !(/[aeiou]/i.test(inputArray[2]))) {
